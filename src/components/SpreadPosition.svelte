@@ -1,5 +1,6 @@
 <script>
 import { createEventDispatcher } from 'svelte'
+import { fetchCard, fetchRandomCard } from '../utils/pokeutils'
 import Card from './Card.svelte'
 
 const dispatch = createEventDispatcher()
@@ -7,11 +8,14 @@ const dispatch = createEventDispatcher()
 export let positionNumber
 export let aspect
 export let revealed
+
+// const cardPromise = fetchCard('palkia')
+const cardPromise = fetchRandomCard()
 </script>
 
 <style>
 .spread-position {
-  width: 24rem;
+  width: 20rem;
   min-width: 12rem;
   max-width: 100%;
 }
@@ -24,8 +28,16 @@ h2 {
 <div class="spread-position">
   <h2>{aspect ? aspect : `- ${positionNumber + 1} -`}</h2>
 
-  <Card 
-    {revealed} 
-    on:revealCard={() => dispatch('revealCard')}
-    />
+  {#await cardPromise}
+    (loading...)
+  {:then data}
+    <Card 
+      {data}
+      {revealed} 
+      on:revealCard={() => dispatch('revealCard')}
+      />
+  {:catch err}
+    (error!!! {err})
+  {/await}
+
 </div>

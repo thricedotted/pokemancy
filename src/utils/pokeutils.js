@@ -24,7 +24,9 @@ function sortBySlot(x1, x2) {
 
 export async function fetchCard(n) {
   const species = await PokeAPI.getPokemonSpeciesByName(n)
-  const pokemon = await PokeAPI.getPokemonByName(species.name)
+
+  const lookupName = species.varieties.find(x => x.is_default).pokemon.name
+  const pokemon = await PokeAPI.getPokemonByName(lookupName)
 
   const abilities = await Promise.all(
     pokemon.abilities
@@ -49,6 +51,7 @@ export async function fetchCard(n) {
     generation: species.generation.name.replace('generation-', ''),
 
     sprites: pokemon.sprites,
+    color: species.color.name,
 
     abilities: abilities.filter(x => !x.isHidden),
     hiddenAbility: abilities.find(x => x.isHidden),
