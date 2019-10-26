@@ -32,7 +32,7 @@ onMount(() => {
   justify-content: center;
 
   background: white;
-  padding: var(--gutter);
+  /* padding: var(--gutter); */
   border-radius: 0.2rem;
   border: 0.2rem double white;
   box-shadow: 
@@ -41,6 +41,8 @@ onMount(() => {
   ;
 
   margin: calc(var(--gutter) * 2);
+
+  /* height: 22rem; */
 
   transition-duration: 500ms;
 

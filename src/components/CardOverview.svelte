@@ -16,10 +16,11 @@ const {
 
 <style>
 .overview {
-  display: flex;
-  flex-flow: column;
-  align-items: center;
   align-self: stretch;
+  display: grid;
+  grid-template-rows: repeat(2, auto) 1fr repeat(2, auto);
+  justify-items: center;
+  margin: -0.5rem 0;
 }
 
 h3 {
@@ -40,16 +41,13 @@ h3 {
   text-align: center;
   background: var(--pokemon-color-light);
   padding: 0 var(--shim);
-  --overlap-margin: -1.3rem;
 }
 
 .id {
-  margin-top: var(--overlap-margin);
   text-shadow: 0 0 2rem var(--pokemon-color-medium-dark);
 }
 
 .genus {
-  margin-bottom: var(--overlap-margin);
   order: 99;
 }
 
@@ -70,10 +68,10 @@ img {
   grid-auto-flow: column;
   grid-gap: var(--gutter); */
   display: flex;
-  align-self: stretch;
+  justify-self: stretch;
   justify-content: space-between;
 
-  margin: calc(var(--half-shim) * -1) calc(var(--shim)* -1);
+  margin: calc(var(--half-shim) * -1) var(--shim);
 
   text-transform: uppercase;
   font-size: 0.9rem;
