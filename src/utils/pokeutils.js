@@ -9,6 +9,10 @@ function randInt(max) {
   return Math.ceil(Math.random() * max)
 }
 
+function randChoice(arr) {
+  return arr[Math.floor(Math.random() * arr.length)]
+}
+
 function findLang(array, lang) {
   return array.find(x => x.language.name == lang)
 }
@@ -41,6 +45,10 @@ export async function fetchCard(n) {
     })
   )
 
+  // preload sprites
+  const img = new Image()
+  img.src = pokemon.sprites.front_default
+
   return {
     id: pokemon.id,
     name: findLang(species.names, LANG).name,
@@ -68,7 +76,9 @@ export async function fetchCard(n) {
     shape: species.shape.name,
     // habitat: species.habitat.name,
 
-    flavorText: filterLang(species.flavor_text_entries, LANG).map(x => x.flavor_text),
+    flavorText: randChoice(filterLang(species.flavor_text_entries, LANG)).flavor_text
+    // flavorText: filterLang(species.flavor_text_entries, LANG)
+    //             .map(x => x.flavor_text),
   }
 }
 

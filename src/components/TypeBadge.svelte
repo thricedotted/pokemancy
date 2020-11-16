@@ -1,30 +1,19 @@
 <script>
-export let type
+export let type, color
 </script>
 
 <style>
-.type {
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  text-align: center;
-
-  background: var(--type-color);
-  padding: var(--half-shim);
-  border-radius: 0.2rem;
-
-  font-family: 'Share', sans-serif;
-  /* font-feature-settings: 'cpsp'; */
-  letter-spacing: 0.01em;
-  color: white;
-
-  --type-color: gray;
+svg {
+  fill: var(--pokemon-color-medium-light);
+  height: 72%;
 }
 
-.grass {
-  --type-color: green;
+/* ridiculous hack to change type symbol opacity without affecting stacking context */
+svg use {
+  opacity: 0.5;
 }
 </style>
 
-<div class="type {type}">
-  {type}
-</div>
+<svg class="type {type}">
+  <use xlink:href="/types.svg#{type}" />
+</svg>

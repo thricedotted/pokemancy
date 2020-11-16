@@ -1,4 +1,6 @@
 <script>
+import { fade } from 'svelte/transition';
+import CardSide from './CardSide.svelte'
 import TypeBadge from './TypeBadge.svelte'
 
 export let data
@@ -9,28 +11,50 @@ const {
   genus,
   generation,
   sprites,
-  types
+  types,
+  color
   } = {...data}
 
 </script>
 
 <style>
 .overview {
-  align-self: stretch;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
   display: grid;
-  grid-template-rows: repeat(2, auto) 1fr repeat(2, auto);
+  grid-template-rows: auto 1fr auto auto;
+  grid-template-areas:
+    "id"
+    "sprite"
+    "name"
+    "genus"
+  ;
   justify-items: center;
-  margin: -0.5rem 0;
+
+  background: radial-gradient(var(--pokemon-color-medium-dark) -66%, 
+                              transparent 66%);
 }
 
 h3 {
+  grid-area: name;
+
   font-weight: normal;
   font-size: 3rem;
-  font-family: 'Astloch', cursive;
+  font-family: var(--font-title);
   text-shadow: 0 0.1rem 0.1rem var(--pokemon-color-light);
 
-  margin-top: -1rem;
+  margin-top: -2rem;
   margin-bottom: calc(var(--gutter) * 2);
+  order: 1;
+}
+
+@media (max-width: 25rem) {
+  h3 {
+    font-size: 2.5rem;
+    font-size: calc(1rem + 8vw);
+  }
 }
 
 .id, .genus, .types {
@@ -39,77 +63,83 @@ h3 {
 
 .id, .genus {
   text-align: center;
-  background: var(--pokemon-color-light);
-  padding: 0 var(--shim);
 }
 
 .id {
+  grid-area: id;
   text-shadow: 0 0 2rem var(--pokemon-color-medium-dark);
 }
 
 .genus {
-  order: 99;
+  grid-area: genus;
+
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+
+  padding-left: var(--shim);
+  padding-right: calc(var(--shim) - 0.1em);
+
+  background: var(--pokemon-color-light);
+  transform: translateY(-0.1em);
 }
 
 img {
+  grid-area: sprite; 
+
   image-rendering: -webkit-optimize-contrast;
   image-rendering: pixelated;
   image-rendering: crisp-edges;
-  align-self: stretch;
+  align-self: center;
+  text-align: center; /* for alt text */
   width: 100%;
   height: auto;
 
+
   filter: drop-shadow(0 0 1.4rem var(--pokemon-color-light));
-  /* margin: calc(-1 * var(--gutter)) 0; */
 }
 
 .types {
-  /* display: grid;
-  grid-auto-flow: column;
-  grid-gap: var(--gutter); */
+  grid-area: sprite;
+
   display: flex;
+  flex-flow: column;
   justify-self: stretch;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
 
-  margin: calc(var(--half-shim) * -1) var(--shim);
-
-  text-transform: uppercase;
-  font-size: 0.9rem;
-  letter-spacing: 0.2em;
-}
-
-.type {
-  margin-right: -0.2em;
-}
-
-.empty.type::before {
-  content: 'Ø';
+  /* margin: 0 var(--shim); */
+  margin: var(--gutter);
+  gap: var(--double-gutter);
 }
 </style>
 
-<div class="overview">
-  <div class="id">#{data.id}</div>
-
-  <div class="types">
-    {#each data.types as type}
-      <div class="type">{type}</div>
-      <!-- <TypeBadge {type} /> -->
-    {/each}
-    {#if data.types.length == 1}
-      <div class="empty type"></div>
-    {/if}
-  </div>
-
-  <!-- <div class="genus">Gen.&nbsp;{data.generation.toUpperCase()} {data.genus}</div> -->
-  <div class="genus">{data.genus}</div>
-
-  <img 
-    class="sprite"
-    src="{data.sprites.front_default}" 
-    alt="Front-facing sprite of {data.name}"
-    crossorigin="anonymous"
+<CardSide>
+  <div 
+    class="overview"
+    transition:fade
     >
+    <h3 class="name">{name}</h3>
 
-  <h3 class="name">{data.name}</h3>
+    <div class="id">#{id}</div>
 
-</div>
+    <div class="genus">{genus}</div>
+
+    <div class="types">
+      {#each types as type}
+        <TypeBadge {type} {color} />
+      {/each}
+      <!-- {#if types.length == 1}
+        <div class="empty type"></div>
+      {/if} -->
+    </div>
+
+    <img 
+      class="sprite"
+      src="{sprites.front_default}" 
+      alt="Front-facing sprite of {name}"
+      crossorigin="anonymous"
+      >
+  </div>
+</CardSide>

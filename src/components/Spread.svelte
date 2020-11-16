@@ -15,7 +15,7 @@ export let spread
 }
 
 :global(.spread > *) {
-  margin: var(--gutter);
+  margin: var(--gutter) var(--double-gutter);
 }
 </style>
 
