@@ -31,10 +31,14 @@ function clearSpread() {
 }
 
 // to make iteration on cards easier
-onMount(() => {
-	addCard()
-	revealCard(0)
-})
+const { NODE_ENV } = process.env;
+const dev = NODE_ENV === 'development';
+if (dev) {
+	onMount(() => {
+		addCard()
+		revealCard(0)
+	})
+}
 </script>
 
 <Spread
