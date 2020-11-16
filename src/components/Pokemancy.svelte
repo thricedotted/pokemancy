@@ -3,16 +3,9 @@ import { onMount } from 'svelte'
 import ActionPanel from './ActionPanel.svelte'
 import Spread from './Spread.svelte'
 
-import { fetchCard } from '../utils/pokeutils'
-
 let spread = []
 
 $: allRevealed = !spread.find(x => !x.revealed)
-
-// async function testFetch() {
-// 	const card = await fetchCard(1)
-// 	spreadCards = [...spreadCards, { revealed: false, card: card }]
-// }
 
 function addCard(aspect) {
 	spread = [...spread, { aspect, revealed: false }]

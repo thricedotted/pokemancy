@@ -45,7 +45,7 @@ h3 {
   font-family: var(--font-title);
   text-shadow: 0 0.1rem 0.1rem var(--pokemon-color-light);
 
-  margin-top: -2rem;
+  margin-top: -2.4rem; /* there is a reason for this measurement but idk what it is */
   margin-bottom: calc(var(--gutter) * 2);
   order: 1;
 }
@@ -96,7 +96,6 @@ img {
   width: 100%;
   height: auto;
 
-
   filter: drop-shadow(0 0 1.4rem var(--pokemon-color-light));
 }
 
@@ -112,6 +111,16 @@ img {
   /* margin: 0 var(--shim); */
   margin: var(--gutter);
   gap: var(--double-gutter);
+}
+
+.types :global(svg) {
+  fill: var(--pokemon-color-medium-light);
+  height: 72%;
+}
+
+/* ridiculous hack to change type symbol opacity without affecting stacking context */
+.types :global(svg use) {
+  opacity: 0.65;
 }
 </style>
 
@@ -130,9 +139,6 @@ img {
       {#each types as type}
         <TypeBadge {type} {color} />
       {/each}
-      <!-- {#if types.length == 1}
-        <div class="empty type"></div>
-      {/if} -->
     </div>
 
     <img 

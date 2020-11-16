@@ -5,12 +5,6 @@ export let type, color
 <style>
 svg {
   fill: var(--pokemon-color-medium-light);
-  height: 72%;
-}
-
-/* ridiculous hack to change type symbol opacity without affecting stacking context */
-svg use {
-  opacity: 0.5;
 }
 </style>
 

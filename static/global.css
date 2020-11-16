@@ -17,6 +17,10 @@ body {
 	font-family: var(--font-body);
 	color: #333;
 	line-height: 1;
+
+	background-image: url('/unown-tile.svg');
+	background-size: 12rem;
+	background-color: #f8f8f8;
 }
 
 img {

@@ -39,6 +39,10 @@ h2 {
   align-items: center;
   justify-content: center;
 }
+
+.placeholder, .card-wrap {
+  background: rgba(255, 255, 255, 0.5);
+}
 </style>
 
 <div 
