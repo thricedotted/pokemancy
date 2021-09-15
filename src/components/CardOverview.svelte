@@ -13,7 +13,7 @@ const {
   sprites,
   types,
   color
-  } = {...data}
+  } = data
 
 </script>
 
@@ -112,16 +112,6 @@ img {
   margin: var(--gutter);
   gap: var(--double-gutter);
 }
-
-.types :global(svg) {
-  fill: var(--pokemon-color-medium-light);
-  height: 72%;
-}
-
-/* ridiculous hack to change type symbol opacity without affecting stacking context */
-.types :global(svg use) {
-  opacity: 0.65;
-}
 </style>
 
 <CardSide>
@@ -137,7 +127,7 @@ img {
 
     <div class="types">
       {#each types as type}
-        <TypeBadge {type} {color} />
+        <TypeBadge {type} />
       {/each}
     </div>
 

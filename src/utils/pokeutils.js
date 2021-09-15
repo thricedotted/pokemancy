@@ -1,6 +1,6 @@
 import { Pokedex } from 'pokeapi-js-wrapper'
 
-const TOTAL_POKEMON = 807
+const TOTAL_POKEMON = 898
 const LANG = 'en'
 
 const PokeAPI = new Pokedex()
