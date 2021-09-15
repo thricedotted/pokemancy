@@ -1,13 +1,17 @@
-export async function get(req, res, next) {
-  const { side } = req.params
-  const hexColor = req.query.hex || '000000'
+export async function get({ params, query }) {
+  const { side } = params
+  const hexColor = query.get('hex') || '000000'
 
-  res.setHeader('Content-Type', 'image/svg+xml')
-  res.end(svgFill(hexColor, side))
+  return {
+    headers: {
+      'Content-Type': 'image/svg+xml'
+    },
+    body: svgFill(hexColor, side)
+  }
 }
 
 function svgFill(hexColor, side) {
-  if (side == 'front') {
+  if (side === 'front') {
     return `
   <svg 
       version="1.1"
