@@ -1,6 +1,4 @@
 <script>
-import CardSide from './CardSide.svelte'
-
 export let frontName = 'front'
 export let backName = 'back'
 

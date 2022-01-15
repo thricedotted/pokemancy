@@ -1,5 +1,5 @@
 <script>
-import Pokemancy from '../components/Pokemancy.svelte'
+	import Pokemancy from '$lib/components/Pokemancy.svelte'
 </script>
 
 <svelte:head>

@@ -1,6 +1,5 @@
-export async function get({ params, query }) {
-  const { side } = params
-  const hexColor = query.get('hex') || '000000'
+export async function get({ params }) {
+  const { side, hexColor } = params
 
   return {
     headers: {
