@@ -33,7 +33,7 @@
     <img 
       class="sprite"
       src="{sprites.back_default}" 
-      alt="Back-facing sprite of {name}"
+      alt=""
       crossorigin="anonymous"
       >
   </div>

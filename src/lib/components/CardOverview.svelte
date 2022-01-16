@@ -38,7 +38,7 @@
     <img 
       class="sprite"
       src="{sprites.front_default}" 
-      alt="Front-facing sprite of {name}"
+      alt=""
       crossorigin="anonymous"
       >
   </div>
