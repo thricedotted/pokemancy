@@ -33,11 +33,20 @@ let flipped = false
   width: 100%;
   height: 100%;
   backface-visibility: hidden;
+
+  border-radius: 0.4rem;
+  border: 1px dotted var(--pokemon-color-medium-light);
 }
 
-:global(.side > [slot]) {
+.side > :global([slot]) {
   width: 100%;
   height: 100%;
+}
+
+.side[aria-hidden=false] {
+  box-shadow: 2px 2px 0 var(--pokemon-color-medium-light);
+  transition: box-shadow 250ms;
+  transition-delay: 500ms;
 }
 
 .back {

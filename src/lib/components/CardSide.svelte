@@ -16,7 +16,6 @@
 
     border: var(--external-padding) solid var(--pokemon-color-light);
 
-    box-shadow: 0 0.2rem 1rem #ddd;
     border-radius: 0.4rem;
   }
 
