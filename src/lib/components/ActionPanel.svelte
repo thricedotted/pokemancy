@@ -13,7 +13,7 @@ function addCard() {
 }
 
 function clearSpread() {
-  if (confirm("Clear this spread?"))
+  if (confirm("This will remove all the current cards from the spread.\nAre you sure?"))
     dispatch('clearSpread')
 }
 
@@ -40,16 +40,20 @@ function revealAll() {
 </style>
 
 <div class="actions">
-  <div class="add-action">
+  <form 
+    class="add-action"
+    on:submit|preventDefault={addCard}
+    >
     <input 
       type="text"
       placeholder="aspect?"
       bind:value={aspect}
       >
     <button
-      on:click={addCard}
-      >add to spread</button>
-  </div>
+      type="submit"
+      >add to spread
+    </button>
+  </form>
 
   <div class="reveal-action">
     <button

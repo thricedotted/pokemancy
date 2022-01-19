@@ -1,3 +1,5 @@
-<main>
-	<slot></slot>
-</main>
+<script>
+	import '../global.css'
+</script>
+
+<slot></slot>
