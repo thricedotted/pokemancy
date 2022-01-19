@@ -26,19 +26,6 @@ function revealAll() {
 }
 </script>
 
-<style>
-.actions {
-  position: relative;
-  margin: var(--double-gutter) auto;
-  text-align: center;
-}
-
-.actions > * {
-  position: relative;
-  margin: var(--gutter) auto;
-}
-</style>
-
 <div class="actions">
   <form 
     class="add-action"
@@ -74,3 +61,49 @@ function revealAll() {
   </div>
 
 </div>
+
+<style>
+  .actions {
+    position: relative;
+    margin: var(--double-gutter) auto;
+    text-align: center;
+  }
+
+  .actions > * {
+    position: relative;
+    margin: var(--gutter) auto;
+  }
+
+  input, button {
+    background: #f8f8f8;
+    color: inherit;
+    font: inherit;
+    padding: 0.3rem;
+    border: 1px solid #ccc;
+    border-radius: 0.2rem;
+  }
+
+  button {
+    padding: 0.4rem 0.8rem;
+    box-shadow: 1px 1px 0 #ccc;
+  }
+
+  button:not([disabled]) {
+    cursor: pointer;
+  }
+
+  button[disabled] {
+    cursor: not-allowed;
+    color: #ccc;
+  }
+
+  button:not([disabled]):hover, button:focus {
+    box-shadow: 2px 2px 0 #ccc;
+    transform: translate(-1px, -1px);
+  }
+
+  button:not([disabled]):active {
+    box-shadow: 0px 0px 0 #ccc;
+    transform: translate(1px, 1px);
+  }
+</style>

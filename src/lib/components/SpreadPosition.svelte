@@ -13,7 +13,7 @@
   export let revealed
 
   // const cardPromise = fetchCard('xerneas')
-  const cardPromise = fetchRandomCard()
+  let cardPromise = fetchRandomCard()
 </script>
 
 <div 
@@ -49,7 +49,18 @@
       </div>
     {/if}
   {:catch err}
-    (error!!! {err})
+    <div
+      class="placeholder"
+      >
+      <p>Something went wrong!</p>
+
+      <button
+        on:click={() => cardPromise = fetchRandomCard()}
+        >
+        Load a new card
+      </button>
+
+    </div>
   {/await}
 </div>
 
@@ -104,5 +115,16 @@
     100% {
       transform: rotateY(0);
     }
+  }
+
+  button {
+    background: #f8f8f8;
+    color: inherit;
+    font: inherit;
+    padding: 0.4rem 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 0.2rem;
+    box-shadow: 1px 1px 0 #ccc;
+    cursor: pointer;
   }
 </style>
