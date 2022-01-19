@@ -20,7 +20,7 @@
   class="spread-position"
   transition:fade|local
   >
-  <h2>{aspect ? aspect : `- ${positionNumber + 1} -`}</h2>
+  <h2>{aspect ? aspect : positionNumber + 1}</h2>
 
   {#await cardPromise}
     <div 
@@ -78,6 +78,18 @@
 
   h2 {
     text-align: center;
+    font-weight: normal;
+    font-style: italic;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    line-height: 1;
+    text-shadow: 1px 1px 0 #f8f8f8;
+  }
+
+  h2::before, h2::after {
+    content: '-';
+    padding: 0 0.2em;
+
   }
 
   .placeholder {
