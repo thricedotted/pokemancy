@@ -38,7 +38,9 @@ function revealAll() {
       >
     <button
       type="submit"
-      >add to spread
+      >
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+      add to spread
     </button>
   </form>
 
@@ -46,18 +48,27 @@ function revealAll() {
     <button
       on:click={revealNext}
       disabled={allRevealed}
-      >reveal next</button>
+      >
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+      reveal next
+    </button>
 
     <button
       on:click={revealAll}
       disabled={allRevealed}
-      >reveal all</button>
+      >
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-target"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+      reveal all
+    </button>
   </div>
 
   <div class="clear-action">
     <button
       on:click={clearSpread}
-      >clear spread</button>
+      >
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-loader"><line x1="12" y1="2" x2="12" y2="6"></line><line x1="12" y1="18" x2="12" y2="22"></line><line x1="4.93" y1="4.93" x2="7.76" y2="7.76"></line><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"></line><line x1="2" y1="12" x2="6" y2="12"></line><line x1="18" y1="12" x2="22" y2="12"></line><line x1="4.93" y1="19.07" x2="7.76" y2="16.24"></line><line x1="16.24" y1="7.76" x2="19.07" y2="4.93"></line></svg>
+      clear spread
+    </button>
   </div>
 
 </div>
@@ -74,6 +85,14 @@ function revealAll() {
     margin: var(--gutter) auto;
   }
 
+  button svg {
+    stroke: #999;
+    height: 1em;
+    vertical-align: middle;
+    margin-top: -0.1em;
+    margin-right: 0.15em;
+  }
+
   input, button {
     background: #f8f8f8;
     color: inherit;
@@ -84,7 +103,7 @@ function revealAll() {
   }
 
   button {
-    padding: 0.4rem 0.8rem;
+    padding: 0.4rem 0.8rem 0.4rem 0.6rem;
     box-shadow: 1px 1px 0 #ccc;
   }
 
@@ -95,6 +114,10 @@ function revealAll() {
   button[disabled] {
     cursor: not-allowed;
     color: #ccc;
+  }
+
+  button[disabled] svg {
+    stroke: #ccc;
   }
 
   button:not([disabled]):hover, button:focus {
