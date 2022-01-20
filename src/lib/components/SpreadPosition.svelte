@@ -12,9 +12,9 @@
   export let aspect
   export let revealed
   export let hideAspect = false
+  export let name
 
-  // const cardPromise = fetchCard('xerneas')
-  let cardPromise = fetchRandomCard()
+  const cardPromise = name ? fetchCard(name) : fetchRandomCard()
 </script>
 
 <div 
