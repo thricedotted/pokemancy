@@ -3,7 +3,7 @@
 
   <div class="about">
     <p>
-      Pok&eacute;mancy exists as you see it today thanks to all of the following resources: 
+      Pok&eacute;mancy was created with the help of all the following resources: 
     </p>
 
     <ul>
