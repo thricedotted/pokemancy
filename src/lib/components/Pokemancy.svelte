@@ -19,7 +19,7 @@
 
 	function revealNext() {
 		const nextIdx = spread.findIndex(x => !x.revealed)
-		if (nextIdx) revealCard(nextIdx)
+		if (nextIdx > -1) revealCard(nextIdx)
 	}
 
 	function revealAll() {
