@@ -11,6 +11,7 @@
   export let positionNumber
   export let aspect
   export let revealed
+  export let hideAspect = false
 
   // const cardPromise = fetchCard('xerneas')
   let cardPromise = fetchRandomCard()
@@ -20,7 +21,11 @@
   class="spread-position"
   transition:fade|local
   >
-  <h2>{aspect ? aspect : positionNumber + 1}</h2>
+  <h2
+    style:visibility={hideAspect ? 'hidden' : 'visible'}
+    >
+    {aspect ? aspect : positionNumber + 1}
+  </h2>
 
   {#await cardPromise}
     <div 

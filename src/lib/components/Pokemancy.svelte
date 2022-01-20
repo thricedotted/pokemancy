@@ -3,6 +3,7 @@
 
 	import ActionPanel from '$lib/components/ActionPanel.svelte'
 	import Spread from '$lib/components/Spread.svelte'
+	import Welcome from '$lib/components/Welcome.svelte'
 
 	let spread = []
 
@@ -32,18 +33,23 @@
 	}
 
 	// to make iteration on cards easier
-	onMount(() => {
-		addCard()
+	// onMount(() => {
+		// addCard()
 		// revealCard(0)
-	})
+	// })
 </script>
 
-<Spread
-	{spread}
-	on:revealCard={e => revealCard(e.detail)}
-/>
+{#if spread.length > 0}
+	<Spread
+		{spread}
+		on:revealCard={e => revealCard(e.detail)}
+	/>
+{:else}
+	<Welcome />
+{/if}
 
 <ActionPanel
+	{spread}
 	{allRevealed}
 	on:addCard={e => addCard(e.detail)}
 	on:clearSpread={clearSpread}

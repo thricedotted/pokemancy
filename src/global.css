@@ -5,11 +5,12 @@
 :root {
 	--gutter: 0.8rem;
 	--double-gutter: calc(var(--gutter) * 2);
+	--quad-gutter: calc(var(--gutter) * 4);
 	--shim: calc(var(--gutter) / 2);
 	--half-shim: calc(var(--gutter) / 4);
 
 	--font-title: 'Astloch', cursive;
-	--font-body: 'Muli', sans-serif;
+	--font-body: 'Mulish', sans-serif;
 }
 
 body {
