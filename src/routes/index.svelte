@@ -16,7 +16,7 @@
 	<meta property="og:url" content="https://pokemancy.entangled.one" />
 	<meta property="og:description" content="Divination... with Pokémon." />
 	<meta property="og:image" content="{$page.url.origin}/pokemancy.png" />
-	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
 
 <Pokemancy />
